@@ -1,41 +1,26 @@
 import * as rlp from "rlp";
 import { buf2hex } from "../util/buf2hex";
-import { IIbftDetails, IIbftVote } from "./IIbftDetails";
+import { getValidator } from "../util/getValidator";
+import { IIbftDetails } from "./IIbftDetails";
 
 export class ExtraDataDecoder {
-    decode(data: string) {
-        let decodedArray: Buffer | Buffer[] | rlp.Decoded = rlp.decode("0x" + data.replace(/^0x/, "")) as Buffer[];
-        let defaultExtraData = buf2hex(decodedArray[0] as Uint8Array);
-        let validatorsArray: string[] = [];
-        let validatorsRawArray = decodedArray[1] as any as Uint8Array[];
-        validatorsRawArray.forEach((item) => {
-            validatorsArray.push(buf2hex(item));
-        });
-        let votesArray = decodedArray[2] as any as Uint8Array[];
-        let agregatedVotes = [];
-        if (votesArray.length !== 0) {
-            for (let i = 0; i < votesArray.length; i++) {
-                if (i === 0 || i % 2 === 0) {
-                    let voteItem: IIbftVote = {
-                        address: buf2hex(votesArray[i]),
-                        vote: votesArray[i + 1][0] !== 0 ? true : false // true means new validator added, false-removed
-                    };
-                    agregatedVotes.push(voteItem);
-                }
-            }
-        }
-        let numberOfTries = parseInt(buf2hex(decodedArray[3]), 10);
-        let commitSealsRawArray = decodedArray[4] as any as Uint8Array[];
-        let commitSealsArray: string[] = [];
-        commitSealsRawArray.forEach((item) => {
-            commitSealsArray.push(buf2hex(item));
-        });
+    decode(data: string, hash: string) {
+        const defaultExtraData = "0x" + data.replace(/^0x/, "").slice(64);
+        const decodedArray: Buffer | Buffer[] | rlp.Decoded = rlp.decode(defaultExtraData) as Buffer[];
 
-        let decodedExtraData: IIbftDetails = {
+        const validatorsArray: string[] = [];
+        const validatorsRawArray = decodedArray[0] as any as Uint8Array[];
+        validatorsRawArray.forEach((item) => validatorsArray.push(buf2hex(item)));
+
+        const commitSealsRawArray = decodedArray[2] as any as Uint8Array[];
+        const commitSealsArray: string[] = [];
+        commitSealsRawArray.forEach((item) => commitSealsArray.push(buf2hex(item)));
+
+        const decodedExtraData: IIbftDetails = {
             extraData: defaultExtraData,
             validators: validatorsArray,
-            votes: agregatedVotes,
-            blockTries: numberOfTries,
+            validated: getValidator(hash, data),
+            seal: buf2hex(decodedArray[1]),
             commitSeals: commitSealsArray
         };
 

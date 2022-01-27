@@ -1,9 +1,9 @@
 {
-  "name": "@alethio/explorer-plugin-eth-ibft2",
+  "name": "@alethio/explorer-plugin-eth-ibft",
   "publisher": "aleth.io",
-  "pluginName": "eth-ibft2",
+  "pluginName": "eth-ibft",
   "version": "2.0.1",
-  "description": "Alethio explorer plugin for Ethereum chains with IBFT2 consensus algorithm",
+  "description": "Alethio explorer plugin for Ethereum chains with IBFT consensus algorithm",
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run clean && npm run build-js-prod",
@@ -18,7 +18,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Alethio/explorer-plugin-eth-ibft2"
+    "url": "https://github.com/Alethio/explorer-plugin-eth-ibft"
   },
   "engines": {
     "@alethio/cms": "^1.0.0-beta.7"
@@ -52,6 +52,7 @@
   "dependencies": {
     "@alethio/explorer-ui": "^1.0.0-beta.0",
     "@alethio/ui": "^1.0.0-beta.11",
+    "ethers": "^5.5.3",
     "rlp": "^2.2.3"
   }
 }
