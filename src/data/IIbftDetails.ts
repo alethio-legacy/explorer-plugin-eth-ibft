@@ -5,7 +5,7 @@ export interface IIbftVote {
 export interface IIbftDetails {
     extraData: string;
     validators: string[];
-    votes: IIbftVote[];
-    blockTries: number;
+    validated: string;
+    seal: string;
     commitSeals: string[];
 }
