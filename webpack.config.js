@@ -42,7 +42,7 @@ function getConfig(isProduction) {
             filename: "index.js",
             chunkFilename: "[contentHash].bundle.js",
             pathinfo: !!isDebug,
-            library: "__aleth_io__ethIbft2",
+            library: "__aleth_io__ethIbft",
             libraryTarget: "jsonp"
         },
         optimization: isDebug ? void 0 : {
