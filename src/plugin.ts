@@ -5,9 +5,9 @@ const plugin: IPlugin = {
     init(config, api, logger, publicPath) {
         __webpack_public_path__ = publicPath;
 
-        api.addModuleDef("module://aleth.io/eth-ibft2/block/full/extra-data",
+        api.addModuleDef("module://aleth.io/eth-ibft/block/full/extra-data",
             extraDataModule("adapter://aleth.io/full/block/details"));
-        api.addModuleDef("module://aleth.io/eth-ibft2/block/lite/extra-data",
+        api.addModuleDef("module://aleth.io/eth-ibft/block/lite/extra-data",
             extraDataModule("adapter://aleth.io/lite/block/details"));
     },
 

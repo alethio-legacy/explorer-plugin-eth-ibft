@@ -1,6 +1,6 @@
-# @alethio/explorer-plugin-eth-ibft2
+# @alethio/explorer-plugin-eth-ibft
 
-Alethio explorer plugin for Ethereum chains with IBFT2 consensus algorithm
+Alethio explorer plugin for Ethereum chains with IBFT consensus algorithm
 
 See [cms-plugin-tool](https://github.com/Alethio/cms-plugin-tool) for install instructions.
 
