@@ -5,6 +5,7 @@ import { IIbftDetails } from "../data/IIbftDetails";
 
 interface IBlockData {
     extraData: string;
+    hash: string;
 }
 
 export const extraDataModule: (blockDataUri: string) => IModuleDef<IExtraDataProps, {}, void> = (blockDataUri) => ({
@@ -15,8 +16,8 @@ export const extraDataModule: (blockDataUri: string) => IModuleDef<IExtraDataPro
             contextType: {},
             dependencies: [blockDataUri],
             async load(context, cancelToken, depData) {
-                return new ExtraDataDecoder().decode(
-                    (depData.get(blockDataUri)! as IBlockData).extraData);
+                const { extraData, hash } = depData.get(blockDataUri)! as IBlockData;
+                return new ExtraDataDecoder().decode(extraData, hash);
             }
         }
     }],
