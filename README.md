@@ -1,4 +1,4 @@
-# @alethio/explorer-plugin-eth-ibft
+# @alethio-legacy/explorer-plugin-eth-ibft
 
 Alethio explorer plugin for Ethereum chains with IBFT consensus algorithm
 
