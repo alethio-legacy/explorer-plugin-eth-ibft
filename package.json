@@ -1,6 +1,6 @@
 {
   "name": "@alethio-legacy/explorer-plugin-eth-ibft",
-  "publisher": "aleth.io",
+  "publisher": "alethio-legacy",
   "pluginName": "eth-ibft",
   "version": "1.0.0",
   "description": "Alethio explorer plugin for Ethereum chains with IBFT consensus algorithm",
@@ -14,11 +14,11 @@
     "build-js-dev": "webpack --config=./webpack.config.dev.js",
     "prepare": "npm run build"
   },
-  "author": "Alexandru Ciuca <alexandru.ciuca@consensys.net>",
+  "author": "Artem A. <artem.v.andreev@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Alethio/explorer-plugin-eth-ibft"
+    "url": "https://github.com/alethio-legacy/explorer-plugin-eth-ibft"
   },
   "engines": {
     "@alethio/cms": "^1.0.0-beta.7"
